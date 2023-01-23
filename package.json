@@ -1,0 +1,23 @@
+{
+  "name": "hlc-api_driver_mongodb",
+  "version": "1.0.0",
+  "description": "A little API using MongoDB native driver with Node.js",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pablo-Miguel/HLC-API_Driver_MongoDB.git"
+  },
+  "author": "Pablo-Miguel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pablo-Miguel/HLC-API_Driver_MongoDB/issues"
+  },
+  "homepage": "https://github.com/Pablo-Miguel/HLC-API_Driver_MongoDB#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^4.13.0"
+  }
+}
