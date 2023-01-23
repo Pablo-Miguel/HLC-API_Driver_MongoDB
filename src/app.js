@@ -1,5 +1,5 @@
 const express = require('express');
-const { crearContacto, buscarContacto } = require('./utils/crudDB');
+const { crearContacto, buscarContacto, actualizaContacto, borraContacto } = require('./utils/crudDB');
 
 const app = express();
 app.use(express.json());
@@ -32,6 +32,43 @@ app.get('/buscarcontacto', (req, res) => {
         res.send(obj);
         
     });
+})
+
+app.put('/actualizacontacto', (req, res) => {
+    return res.send({ error: "Need an Id to update the contact!" });
+})
+
+app.put('/actualizacontacto/:id', (req, res) => {
+
+    if(!req.params.id){
+        return res.send({ error: "Need an Id to update the contact!" });
+    }
+
+    actualizaContacto(req.params.id, req.body, (error, obj)=>{
+        if(error){
+            return res.send({ error });
+        }
+
+        res.send(obj);
+        
+    });
+})
+
+app.delete('/borracontacto', (req, res) => {
+
+    if(!req.query.id){
+        return res.send({ error: "Need an Id to delete the contact!" });
+    }
+
+    borraContacto(req.query.id, (error, obj)=>{
+        if(error){
+            return res.send({ error });
+        }
+
+        res.send(obj);
+        
+    });
+
 })
 
 app.listen(3000, () => {
