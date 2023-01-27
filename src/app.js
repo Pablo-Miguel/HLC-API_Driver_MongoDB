@@ -44,6 +44,14 @@ app.put('/actualizacontacto/:id', (req, res) => {
         return res.send({ error: "Need an Id to update the contact!" });
     }
 
+    const updates = Object.keys(req.body);
+    const allowedUpdates = ['dni', 'nombre', 'edad', 'telefono'];
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
+
+    if (!isValidOperation){
+        return res.send({ error: "Some key is wrong!" });
+    }
+
     actualizaContacto(req.params.id, req.body, (error, obj)=>{
         if(error){
             return res.send({ error });
